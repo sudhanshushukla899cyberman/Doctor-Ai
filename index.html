@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Doctor AI — Simple Symptom Helper</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Doctor AI — Symptom Helper (Demo)</h1>
+    <p class="small">This is a simple, demo rule-based assistant for education and triage ideas only. It is not medical advice. Always consult a healthcare professional for diagnosis and prescriptions.</p>
+
+    <div style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <label class="small" for="textSize">Text size:</label>
+      <select id="textSize" aria-label="Text size selector">
+        <option value="normal">Normal</option>
+        <option value="large">Large</option>
+        <option value="xlarge">Extra Large</option>
+      </select>
+
+      <label class="small" for="highContrast" style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="highContrast"> High contrast</label>
+      <button id="speakBtn" style="background:#1a9;">Read aloud</button>
+    </div>
+
+    <div class="grid">
+      <div>
+        <label for="age">Age (years)</label>
+        <input id="age" type="number" min="0" max="130" placeholder="e.g., 30" />
+      </div>
+      <div>
+        <label for="sex">Sex</label>
+        <select id="sex">
+          <option value="unspecified">Prefer not to say</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="height">Height (cm)</label>
+        <input id="height" type="number" min="30" max="300" placeholder="e.g., 170" />
+      </div>
+      <div>
+        <label for="weight">Weight (kg)</label>
+        <input id="weight" type="number" min="1" max="500" placeholder="e.g., 70" />
+      </div>
+    </div>
+
+    <h3 style="margin-top:18px">Select Symptoms</h3>
+    <div class="symptom-list" id="symptomCheckboxes">
+      <!-- checkboxes added by JS -->
+    </div>
+    <label for="freeSymptoms" style="margin-top:12px">Or type symptoms (comma separated)</label>
+    <textarea id="freeSymptoms" rows="2" placeholder="e.g., fever, headache, sore throat"></textarea>
+
+    <label for="diseaseSearch" style="margin-top:12px">Or search a disease name</label>
+    <input id="diseaseSearch" list="diseases" placeholder="Type to search diseases (e.g., influenza)" />
+    <datalist id="diseases">
+      <!-- populated by JS -->
+    </datalist>
+
+    <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+      <button id="submitBtn" style="background:#2b8;color:#fff">Submit</button>
+      <button id="analyzeBtn">Analyze</button>
+      <button id="clearBtn" style="background:#e0e6ef;color:#122">Clear</button>
+      <div class="small">Tip: pick symptoms or type them manually.</div>
+    </div>
+
+    <div id="results" class="result" style="display:none"></div>
+
+    <div id="preventivePanel" class="result" style="margin-top:14px">
+      <strong>Common Preventive Measures & Medicines</strong>
+      <div id="preventiveList" class="small" style="margin-top:8px">
+        <!-- populated by JS -->
+      </div>
+      <div class="small" style="margin-top:8px;color:#333;font-weight:600">Important:</div>
+      <div class="small">The list below names commonly used vaccines and preventive measures. This is informational only — discuss with your healthcare provider before starting any vaccine, supplement or medicine.</div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> This demo provides general information only and is not a substitute for professional medical diagnosis or treatment. For any severe, worsening, or life-threatening symptoms (high fever, difficulty breathing, chest pain, confusion, fainting, severe bleeding), seek emergency care immediately.
+    </div>
+  </div>
+
+  <!-- Data first, then logic -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
